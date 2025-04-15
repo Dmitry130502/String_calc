@@ -13,17 +13,17 @@ public class Main {
 
         String str = sc.nextLine();
 
-        Main.String_calc(str);
+        out.println(calc(str));
+
     }
 
-     static void String_calc(String input) throws Exception {
+     public static String calc(String input) throws Exception {
 
          String[] arr = input.split(" ");
          int length = Array.getLength(arr);
          byte a = Byte.parseByte(arr[0]);
          byte b = Byte.parseByte(arr[2]);
-
-         String znak = String.valueOf(arr[1]);
+         String operation = String.valueOf(arr[1]);
          byte result = 0;
 
          if (length != 3) {
@@ -34,28 +34,28 @@ public class Main {
              }
          }
 
-         if (znak.equals("+")) {
+         if (a < 1 || a > 10 || b < 1 || b > 10) throw new Exception("введите число от 1 до 10");
+
+         if (operation.equals("+")) {
              result = (byte) (a + b);
          }
 
-         if (znak.equals("-")) {
+         if (operation.equals("-")) {
              result = (byte) (a - b);
          }
 
-         if (znak.equals("*")) {
+         if (operation.equals("*")) {
              result = (byte) (a * b);
          }
 
-         if (znak.equals("/")) {
+         if (operation.equals("/")) {
              result = (byte) (a / b);
          }
 
-         if (!(znak.equals("+") || znak.equals("-") || znak.equals("*") || znak.equals("/"))) {
+         if (!(operation.equals("+") || operation.equals("-") || operation.equals("*") || operation.equals("/"))) {
              throw new Exception();
          }
 
-         if (a < 1 || a > 10 || b < 1 || b > 10) throw new Exception("введите число от 1 до 10");
-
-         out.println(result);
+         return String.valueOf(result);
      }
 }
